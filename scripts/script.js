@@ -1,16 +1,22 @@
+let gamesWon = 0;
+let gamesLost = 0;
+let gamesTied = 0;
+let result = null;
+let playerString = null;
+let itemSelected = false;
+let numberOfGames = 0;
+
 function game(){
-    let numberOfGames = 0;
-    while (numberOfGames < 5){
-        let playerString = prompt("Rock, Paper, Or scissors").toString().trim().toLowerCase();
-        // converts input to a string, lowercase, and trim whitespaces
-        if (playerString === "rock" || playerString === "paper" || playerString === "scissors"){
-            play(playerString);
-            numberOfGames++;
-            // only adds with valid inputs
-        } else {
-            console.log("Invalid input, try again!");
-        }
+    if (itemSelected && numberOfGames < 5){
+        let playerString = this.dataset.value;
+        play(playerString);
+        numberOfGames++;
     }
+
+    gamesWon = 0;
+    gamesLost = 0;
+    gamesTied = 0;
+    result = null;
 }
 
 function computer_play(){
@@ -27,31 +33,64 @@ function computer_play(){
 
 function play(string){
     let computerString = computer_play();
-    let playerString = string;
+    playerString = string;
 
-    console.log(compare(playerString, computerString));
+    result = compare(playerString, computerString);
+    console.log(result);
 }
 
 function compare(playerString, computerString){
+    // add a string of win / loss / tie to easily compare
     if (playerString === "rock" && computerString === "scissors"){
+        result = "win";
+        gamesWon++;
         return "You Win! Rock beats scissors!";
     } else if (playerString === "rock" && computerString === "rock"){
+        result = "tie";
+        gamesTied++;
         return "Its a tie! You both chose rock!";
     } else if (playerString === "rock" && computerString === "paper"){
+        result = "loss";
+        gamesLost++;
         return "You Lose! Paper beats rock!";
     } else if (playerString === "paper" && computerString === "paper"){
+        result = "tie";
+        gamesTied++;
         return "Its a tie! You both chose paper!";
     } else if (playerString === "paper" && computerString === "rock"){
+        result = "win";
+        gamesWon++;
         return "You Win! Paper beats rock!";
     } else if (playerString === "paper" && computerString === "scissors"){
+        result = "loss";
+        gamesLost++;
         return "You Lose! Scissors beats paper!";
     } else if (playerString === "scissors" && computerString === "scissors"){
+        result = "tie";
+        gamesTied++;
         return "Its a tie! You both chose scissors!";
     } else if (playerString === "scissors" && computerString === "paper"){
+        result = "win";
+        gamesWon++;
         return "You Win! Scissors beats paper!";
     } else if (playerString === "scissors" && computerString === "rock"){
+        result = "loss";
+        gamesLost++;
         return "You Lose! Rock beats scissors!";
     }
 }
 
-game();
+function onMouseDown(){
+    itemSelected = true;
+    //this.setAttribute("style", "border: 3px solid yellow");
+}
+
+function addImageListeners(){
+    const images = document.querySelectorAll("img.left");
+    console.log(images);
+    images.forEach(image => image.addEventListener("mousedown", onMouseDown));
+    images.forEach(image => image.addEventListener("mouseup", game));
+}
+
+    addImageListeners();
+    game();

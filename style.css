@@ -1,0 +1,53 @@
+.container {
+    position: relative;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    padding:1px;
+    border:1px solid #021a40;
+    align-content: center;
+}
+
+#left {
+    left: 100px;
+    width: 50%;
+
+}
+
+#right {
+    float: right;
+    width: 50%;
+}
+
+#left #rock {
+    left: 150px;
+    top: 50px;
+}
+
+#left #scissors {
+    left: 150px;
+    top: 200px;
+}
+
+#left #paper {
+    left: 150px;
+    top: 350px;
+}
+
+#right #paper {
+    right: 150px;
+    top: 350px;
+}
+
+#right #rock {
+    right: 150px;
+    top: 50px;
+}
+
+#right #scissors {
+    right: 150px;
+    top: 200px;
+}
