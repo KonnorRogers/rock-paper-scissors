@@ -1,53 +1,26 @@
 .container {
-    position: relative;
+    display: flex;
+    height: 300px;
+    margin: auto;
+    justify-content: center;
 }
 
 img {
     height: 100px;
     width: 100px;
-    position: absolute;
+    /* height: 10%;
+    width: 20%; */
+    /* position: relative; */
     padding:1px;
     border:1px solid #021a40;
-    align-content: center;
+    margin: auto;
 }
 
-#left {
-    left: 100px;
-    width: 50%;
+.results {
+    /* position: relative; */
+    /* align-content: center; */
+    font-size: 2em;
+
 
 }
 
-#right {
-    float: right;
-    width: 50%;
-}
-
-#left #rock {
-    left: 150px;
-    top: 50px;
-}
-
-#left #scissors {
-    left: 150px;
-    top: 200px;
-}
-
-#left #paper {
-    left: 150px;
-    top: 350px;
-}
-
-#right #paper {
-    right: 150px;
-    top: 350px;
-}
-
-#right #rock {
-    right: 150px;
-    top: 50px;
-}
-
-#right #scissors {
-    right: 150px;
-    top: 200px;
-}

@@ -7,7 +7,7 @@ let itemSelected = false;
 let numberOfGames = 0;
 
 function game(){
-    if (itemSelected && numberOfGames < 5){
+    if (itemSelected){
         let playerString = this.dataset.value;
         play(playerString);
         numberOfGames++;
@@ -36,7 +36,12 @@ function play(string){
     playerString = string;
 
     result = compare(playerString, computerString);
-    console.log(result);
+
+    result += "<br> Games Won: " + gamesWon + "<br>Games Lost: " + gamesLost + "<br> Games Tied: " + gamesTied;    // console.log(result);
+    // let pResult = document.createElement("p");
+    // pResult.textContent = result;
+    document.querySelector(".results").innerHTML = result;
+
 }
 
 function compare(playerString, computerString){
